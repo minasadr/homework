@@ -21,7 +21,7 @@ fun compares2(a: Array<Char>, b: Array<Char>): Int {
     return 0
 }
 
-class EightTest {
+class Eight2Test {
     @Test
     fun compareArrays1() {
         assertEquals(1, compares2(arrayOf('a', 'b', 'd'), arrayOf('a', 'b', 'c')))

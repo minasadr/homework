@@ -1,7 +1,7 @@
 package b
 
 fun main(args: Array<String>) {
-    var x: String? = null
+    var x: String?
     do {
         println("answer with Yes or No")
         x = readLine()

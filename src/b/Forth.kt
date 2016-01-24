@@ -1,7 +1,7 @@
 package b
 
 fun main(args: Array<String>) {
-    var passWord: String = ""
+    var passWord: String
     var invalid = true
 
     do {

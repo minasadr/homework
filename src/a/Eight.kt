@@ -81,5 +81,7 @@ class EightTest {
             println("asfdfd")
             2
         }
+
+        println(x)
     }
 }
