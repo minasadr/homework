@@ -1,8 +1,5 @@
 package a
 
-/**
-* Created by mina on 18.01.16.
-*/
 
 fun main(args: Array<String>) {
     val a: Int = 2

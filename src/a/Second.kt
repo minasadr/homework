@@ -3,9 +3,6 @@ package a
 import org.junit.Test
 import kotlin.test.assertEquals
 
-/**
- *  Created by  mina on 18.01.16.
- */
 
 class Rectangle(w: Int, l: Int) {
     val width: Int

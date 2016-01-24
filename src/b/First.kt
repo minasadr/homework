@@ -1,7 +1,5 @@
 package b
 
-/**
- */
 fun main(args: Array<String>) {
     val i = IntArray(10)
     val b = BooleanArray(10)
