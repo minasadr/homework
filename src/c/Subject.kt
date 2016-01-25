@@ -2,6 +2,8 @@ package c
 
 import org.junit.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 
 class Subject(name: String, capacity: Int) {
     val name: String
@@ -17,12 +19,16 @@ class Subject(name: String, capacity: Int) {
     }
 
     fun registerNewStudent(student: Student): Boolean {
-        if (size < capacity) {
+        if (hasFreeSeat()) {
             students[size] = student
             size += 1
             return true
         }
         return false
+    }
+
+    fun hasFreeSeat(): Boolean {
+        return if (size < capacity) true else false
     }
 
     override fun toString(): String = "subject [name: $name, capacity: $capacity, size: $size]"
@@ -42,6 +48,7 @@ class SubjectTest() {
         assertEquals(0, p.size)
         assertEquals(20, p.capacity)
         assertEquals("Math", p.name)
+        assertTrue(p.hasFreeSeat())
     }
 
     @Test
@@ -49,7 +56,7 @@ class SubjectTest() {
         val s = Subject("m", 3)
         assertEquals(true, s.registerNewStudent(Student(170, "Mina", 3.0)))
         assertEquals(1, s.size)
-        assertEquals(true, s.registerNewStudent(Student(169, "Mohammad", 3.6)))
+        assertTrue(s.registerNewStudent(Student(169, "Mohammad", 3.6)))
         assertEquals(2, s.size)
     }
 
@@ -58,8 +65,10 @@ class SubjectTest() {
         val s = Subject("m", 1)
         assertEquals(true, s.registerNewStudent(Student(170, "Mina", 3.0)))
         assertEquals(1, s.size)
+        assertFalse(s.hasFreeSeat())
         assertEquals(false, s.registerNewStudent(Student(169, "Mohammad", 3.6)))
         assertEquals(1, s.size)
+        assertEquals(false, s.hasFreeSeat())
     }
 
 }
