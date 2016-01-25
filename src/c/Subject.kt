@@ -31,6 +31,16 @@ class Subject(name: String, capacity: Int) {
         return if (size < capacity) true else false
     }
 
+    fun show() {
+        if ( size != 0) {
+            for (n in 0..size - 1) {
+                println(students[n])
+            }
+        } else {
+            println("There is no student yet")
+        }
+    }
+
     override fun toString(): String = "subject [name: $name, capacity: $capacity, size: $size]"
 
 }
