@@ -14,12 +14,14 @@ class Student(id: Long, name: String, grade: Double) {
         this.grade = grade
     }
 
-    override fun toString(): String = "Student with ID : $id and Name : $name has a Grade : $grade"
+    override fun toString(): String = "Student [id: $id, name: $name, grade: $grade]"
 }
 
 class studentTest {
     @Test
     fun studentDetail() {
-        assertEquals("Student with ID : 160 and Name : Mina has a Grade : 3.4", Student(160, "Mina", 3.4).toString())
+        assertEquals("Student [id: 160, name: Mina, grade: 3.4]", Student(160, "Mina", 3.4).toString())
     }
 }
+
+
