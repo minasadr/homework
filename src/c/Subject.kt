@@ -7,14 +7,26 @@ class Subject(name: String, capacity: Int) {
     val name: String
     val capacity: Int
     var size: Int
+    val students: Array<Student?>
 
     init {
         this.name = name
         this.capacity = capacity
         this.size = 0
+        this.students = Array(capacity, { null })
+    }
+
+    fun registerNewStudent(student: Student): Boolean {
+        if (size < capacity) {
+            students[size] = student
+            size += 1
+            return true
+        }
+        return false
     }
 
     override fun toString(): String = "subject [name: $name, capacity: $capacity, size: $size]"
+
 }
 
 class SubjectTest() {
@@ -31,4 +43,23 @@ class SubjectTest() {
         assertEquals(20, p.capacity)
         assertEquals("Math", p.name)
     }
+
+    @Test
+    fun registerNewStudent() {
+        val s = Subject("m", 3)
+        assertEquals(true, s.registerNewStudent(Student(170, "Mina", 3.0)))
+        assertEquals(1, s.size)
+        assertEquals(true, s.registerNewStudent(Student(169, "Mohammad", 3.6)))
+        assertEquals(2, s.size)
+    }
+
+    @Test
+    fun registerNewStudentWhenCapacityIsFull() {
+        val s = Subject("m", 1)
+        assertEquals(true, s.registerNewStudent(Student(170, "Mina", 3.0)))
+        assertEquals(1, s.size)
+        assertEquals(false, s.registerNewStudent(Student(169, "Mohammad", 3.6)))
+        assertEquals(1, s.size)
+    }
+
 }
