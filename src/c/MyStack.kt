@@ -40,9 +40,8 @@ class MyStack(capacity: Int) {
     }
 
     fun push(n: Int): Boolean {
-        if (top < capacity - 1) {
-            top += 1
-            myStack[top] = n
+        if (!isFull()) {
+            myStack[++top] = n   //increment then use
             return true
         } else {
             return false
@@ -50,17 +49,15 @@ class MyStack(capacity: Int) {
     }
 
     fun pop(): Int {
-        if (top > -1) {
-            var r = myStack[top]
-            top -= 1
-            return r
+        if (!isEmpty()) {
+            return myStack[top--] // use then deduct
         } else {
             return -1
         }
     }
 
     fun peek(): Int {
-        return if (top > -1) return myStack[top] else -1
+        return if (!isEmpty()) myStack[top] else -1
     }
 
     fun isEmpty(): Boolean {
