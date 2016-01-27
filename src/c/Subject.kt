@@ -14,7 +14,7 @@ class Subject(name: String, capacity: Int) {
     init {
         this.name = name
         this.capacity = capacity
-        this.size = 0
+        size = 0
         this.students = Array(capacity, { null })
     }
 

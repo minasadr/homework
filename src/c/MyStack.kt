@@ -5,8 +5,6 @@ import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
-
-@Suppress("UNREACHABLE_CODE")
 /**
  * Stack is a data structure that stores some elements and these elements can be received in LIFO order.
  * That means the last element that is pushed to stack would be the first one that can be poped.
@@ -53,8 +51,9 @@ class MyStack(capacity: Int) {
 
     fun pop(): Int {
         if (top > -1) {
-            return myStack[top]
+            var r = myStack[top]
             top -= 1
+            return r
         } else {
             return -1
         }
@@ -86,17 +85,30 @@ class MyStackTest() {
         val e = MyStack(3)
         assertTrue(e.push(3))
         assertTrue(e.push(4))
+        assertFalse(e.isFull())
         assertTrue(e.push(5))
+        assertTrue(e.isFull())
         assertFalse(e.push(0))
         assertTrue(e.isFull())
     }
 
     @Test
     fun popAnInt() {
-        val e = MyStack(1)
+        val e = MyStack(2)
         assertTrue(e.push(3))
+        assertTrue(e.push(2))
+        assertEquals(2, e.pop())
         assertEquals(3, e.pop())
-        assertEquals(3, e.peek())
+        assertEquals(-1, e.pop())
+    }
+
+
+    @Test
+    fun peekAnInt() {
+        val e = MyStack(2)
+        assertTrue(e.push(3))
+        assertTrue(e.push(2))
+        assertEquals(2, e.peek())
     }
 
     @Test
