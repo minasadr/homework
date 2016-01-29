@@ -29,19 +29,17 @@ import kotlin.test.assertTrue
  */
 
 class MyStack(capacity: Int) {
-    val capacity: Int
-    val myStack: Array<Int>
+    val elements: Array<Int>
     var top: Int
 
     init {
-        this.capacity = capacity
-        this.myStack = Array(capacity, { 0 })
+        this.elements = Array(capacity, { 0 })
         this.top = -1
     }
 
     fun push(n: Int): Boolean {
         if (!isFull()) {
-            myStack[++top] = n   //increment then use
+            elements[++top] = n   //increment then use
             return true
         } else {
             return false
@@ -50,25 +48,19 @@ class MyStack(capacity: Int) {
 
     fun pop(): Int {
         if (!isEmpty()) {
-            return myStack[top--] // use then deduct
+            return elements[top--] // use then deduct
         } else {
             return -1
         }
     }
 
-    fun peek(): Int {
-        return if (!isEmpty()) myStack[top] else -1
-    }
+    fun peek(): Int = if (!isEmpty()) elements[top] else -1
 
-    fun isEmpty(): Boolean {
-        return if (top == -1) true else false
-    }
+    fun isEmpty(): Boolean = top == -1
 
-    fun isFull(): Boolean {
-        return if (capacity == top + 1) true else false
-    }
+    fun isFull(): Boolean = elements.size == top + 1
 
-    override fun toString(): String = "myStack has $capacity capacity}"
+    override fun toString(): String = "myStack has ${elements.size} capacity}"
 }
 
 class MyStackTest() {
