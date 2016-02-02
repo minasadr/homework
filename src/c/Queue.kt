@@ -52,14 +52,14 @@ class MyQueue(capacity: Int) {
             tail -= 1
             return x
         }
-        return -1
+        throw Exception("the Queue is empty")
     }
 
     /**
      * Returns the first element in the queue WITHOUT removing it.
      * @return the first element in the queue, -1 if the queue is empty
      */
-    fun peek(): Int = if (!isEmpty()) elements[0] else -1
+    fun peek(): Int = if (!isEmpty()) elements[0] else throw Exception("the Queue is empty")
 
     /**
      * Checks if the queue is empty.
@@ -90,6 +90,18 @@ class QueueTest {
         assertTrue(e.isFull())
     }
 
+    @Test(expected = Exception::class)
+    fun removeFromEmptyQueue() {
+        val e = MyQueue(2)
+        e.remove()
+    }
+
+    @Test(expected = Exception::class)
+    fun peekFromEmptyQueue() {
+        val e = MyQueue(2)
+        e.peek()
+    }
+
     @Test
     fun removeTest() {
         val e = MyQueue(1)
@@ -97,8 +109,6 @@ class QueueTest {
         assertFalse(e.insert(2))
         assertEquals(1, e.peek())
         assertEquals(1, e.remove())
-        assertEquals(-1, e.peek())
-        assertEquals(-1, e.remove())
     }
 
 }

@@ -50,11 +50,11 @@ class MyStack(capacity: Int) {
         if (!isEmpty()) {
             return elements[top--] // use then deduct
         } else {
-            return -1
+            throw IllegalStateException("the stack is empty")
         }
     }
 
-    fun peek(): Int = if (!isEmpty()) elements[top] else -1
+    fun peek(): Int = if (!isEmpty()) elements[top] else throw IllegalStateException("the stack is empty")
 
     fun isEmpty(): Boolean = top == -1
 
@@ -65,7 +65,7 @@ class MyStack(capacity: Int) {
 
 class MyStackTest() {
     @Test
-    fun MyStack() {
+    fun myStack() {
         assertEquals("myStack has 20 capacity}", MyStack(20).toString())
     }
 
@@ -88,9 +88,19 @@ class MyStackTest() {
         assertTrue(e.push(2))
         assertEquals(2, e.pop())
         assertEquals(3, e.pop())
-        assertEquals(-1, e.pop())
     }
 
+    @Test(expected = IllegalStateException::class)
+    fun popEmptyStack() {
+        val e = MyStack(2)
+        e.pop()
+    }
+
+    @Test(expected = IllegalStateException::class)
+    fun peekEmptyStack() {
+        val e = MyStack(2)
+        e.peek()
+    }
 
     @Test
     fun peekAnInt() {
