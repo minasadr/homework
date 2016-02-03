@@ -17,12 +17,12 @@ import kotlin.test.assertTrue
  *     - define a variable "head" to keep the index of first element that has been inserted to queue
  *     - define a variable "tail" to shows that index of free position to insert the new element.
  */
-class MyQueue(capacity: Int) {
-    val elements: Array<Int>
+class MyQueueGeneric<T>(capacity: Int) {
+    val elements: Array<T>
     var tail: Int
 
     init {
-        this.elements = Array(capacity, { 0 })
+        this.elements = Array<Any>(capacity, { "" }) as Array<T>
         this.tail = 0
     }
 
@@ -30,7 +30,7 @@ class MyQueue(capacity: Int) {
      * Inserts the given number to the queue
      * @return true if the insert was successful, false if the queue was full
      */
-    fun insert(n: Int): Boolean {
+    fun insert(n: T): Boolean {
         if (!isFull()) {
             elements[tail] = n
             tail += 1
@@ -43,7 +43,7 @@ class MyQueue(capacity: Int) {
      * Removes the first element in the queue and returns it.
      * @return the first element in the queue, -1 if the queue is empty
      */
-    fun remove(): Int {
+    fun remove(): T {
         if (!isEmpty()) {
             val x = elements[0]
             for (n in 0..tail - 2) {
@@ -59,7 +59,7 @@ class MyQueue(capacity: Int) {
      * Returns the first element in the queue WITHOUT removing it.
      * @return the first element in the queue, -1 if the queue is empty
      */
-    fun peek(): Int = if (!isEmpty()) elements[0] else throw Exception("the Queue is empty")
+    fun peek(): T = if (!isEmpty()) elements[0] else throw Exception("the Queue is empty")
 
     /**
      * Checks if the queue is empty.
@@ -81,34 +81,30 @@ class QueueTest {
 
     @Test
     fun insertTest() {
-        val e = MyQueue(2)
+        val e = MyQueueGeneric<Int>(2)
         assertTrue(e.insert(1))
         assertFalse(e.isFull())
         assertTrue(e.insert(2))
-        assertFalse(e.insert(3))
-        assertFalse(e.isEmpty())
         assertTrue(e.isFull())
     }
 
     @Test(expected = Exception::class)
     fun removeFromEmptyQueue() {
-        val e = MyQueue(2)
+        val e = MyQueueGeneric<Int>(2)
         e.remove()
     }
 
     @Test(expected = Exception::class)
     fun peekFromEmptyQueue() {
-        val e = MyQueue(2)
+        val e = MyQueueGeneric<Boolean>(2)
         e.peek()
     }
 
     @Test
     fun removeTest() {
-        val e = MyQueue(1)
-        assertTrue(e.insert(1))
-        assertFalse(e.insert(2))
-        assertEquals(1, e.peek())
-        assertEquals(1, e.remove())
+        val e = MyQueueGeneric<Char>(1)
+        assertTrue(e.insert('c'))
+        assertEquals('c', e.peek())
+        assertEquals('c', e.remove())
     }
-
 }
