@@ -28,16 +28,16 @@ import kotlin.test.assertTrue
  * @return true if the stack is full, false otherwise
  */
 
-class MyStack(capacity: Int) {
-    val elements: Array<Int>
+class MyStackGeneric<T>(capacity: Int) {
+    val elements: Array<T>
     var top: Int
 
     init {
-        this.elements = Array(capacity, { 0 })
+        this.elements = Array<Any>(capacity, { "" }) as Array<T>
         this.top = -1
     }
 
-    fun push(n: Int): Boolean {
+    fun push(n: T): Boolean {
         if (!isFull()) {
             elements[++top] = n   //increment then use
             return true
@@ -46,7 +46,7 @@ class MyStack(capacity: Int) {
         }
     }
 
-    fun pop(): Int {
+    fun pop(): T {
         if (!isEmpty()) {
             return elements[top--] // use then deduct
         } else {
@@ -54,7 +54,7 @@ class MyStack(capacity: Int) {
         }
     }
 
-    fun peek(): Int = if (!isEmpty()) elements[top] else throw IllegalStateException("the stack is empty")
+    fun peek(): T = if (!isEmpty()) elements[top] else throw IllegalStateException("the stack is empty")
 
     fun isEmpty(): Boolean = top == -1
 
@@ -66,12 +66,12 @@ class MyStack(capacity: Int) {
 class MyStackTest() {
     @Test
     fun myStack() {
-        assertEquals("myStack has 20 capacity}", MyStack(20).toString())
+        assertEquals("myStack has 20 capacity}", MyStackGeneric<Boolean>(20).toString())
     }
 
     @Test
     fun pushAnInt() {
-        val e = MyStack(3)
+        val e = MyStackGeneric<Int>(3)
         assertTrue(e.push(3))
         assertTrue(e.push(4))
         assertFalse(e.isFull())
@@ -83,36 +83,36 @@ class MyStackTest() {
 
     @Test
     fun popAnInt() {
-        val e = MyStack(2)
-        assertTrue(e.push(3))
-        assertTrue(e.push(2))
-        assertEquals(2, e.pop())
-        assertEquals(3, e.pop())
+        val e = MyStackGeneric<Char>(2)
+        assertTrue(e.push('c'))
+        assertTrue(e.push('b'))
+        assertEquals('b', e.pop())
+        assertEquals('c', e.pop())
     }
 
     @Test(expected = IllegalStateException::class)
     fun popEmptyStack() {
-        val e = MyStack(2)
+        val e = MyStackGeneric<Int>(2)
         e.pop()
     }
 
     @Test(expected = IllegalStateException::class)
     fun peekEmptyStack() {
-        val e = MyStack(2)
+        val e = MyStackGeneric<Long>(2)
         e.peek()
     }
 
     @Test
     fun peekAnInt() {
-        val e = MyStack(2)
-        assertTrue(e.push(3))
-        assertTrue(e.push(2))
-        assertEquals(2, e.peek())
+        val e = MyStackGeneric<Double>(2)
+        assertTrue(e.push(3.0))
+        assertTrue(e.push(2.0))
+        assertEquals(2.0, e.peek())
     }
 
     @Test
     fun isEmptyOrNot() {
-        val e = MyStack(1)
+        val e = MyStackGeneric<Int>(1)
         assertTrue(e.isEmpty())
     }
 }
