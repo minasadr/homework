@@ -6,17 +6,11 @@ import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
 class Subject(name: String, capacity: Int) {
-    val name: String
-    val capacity: Int
-    var size: Int
-    val students: Array<Student?>
+    val name: String = name
+    val capacity: Int = capacity
+    var size: Int = 0
+    val students: Array<Student?> = Array(capacity, {null})
 
-    init {
-        this.name = name
-        this.capacity = capacity
-        size = 0
-        this.students = Array(capacity, { null })
-    }
 
     fun registerNewStudent(student: Student): Boolean {
         if (hasFreeSeat()) {

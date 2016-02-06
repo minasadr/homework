@@ -4,15 +4,10 @@ import org.junit.Test
 import kotlin.test.assertEquals
 
 class Student(id: Long, name: String, grade: Double) {
-    val id: Long
-    val name: String
-    val grade: Double
+    val id: Long = id
+    val name: String = name
+    val grade: Double = grade
 
-    init {
-        this.id = id
-        this.name = name
-        this.grade = grade
-    }
 
     override fun toString(): String = "Student [id: $id, name: $name, grade: $grade]"
 }
