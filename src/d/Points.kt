@@ -52,7 +52,7 @@ class Point(val x: Int, val y: Int) {
 
     /**
      * Finds the index of the current point in the given array of points.
-     *
+     * @param points the given array to search in
      * @return the index of the current point in the given array, or -1 if the current point is not among the given points
      */
     fun indexIn(points: Array<Point>): Int {
