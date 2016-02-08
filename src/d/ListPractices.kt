@@ -1,6 +1,7 @@
 package d
 
 import org.junit.Test
+import java.util.*
 import kotlin.test.assertEquals
 
 /**
@@ -33,15 +34,87 @@ fun myContains(list: List<Char>, ch: Char): Boolean {
 fun mySum(list: List<Int>): Int {
     var b = 0
     list.forEach { n -> b += n }
-//    for (n in list) {
-//        b += n
-//    }
+    //    for (n in list) {
+    //        b += n
+    //    }
     return b
+}
+
+/**
+ * Returns a list that contains all elements of the given list but WITHOUT any duplication
+ * examples:
+ *  - [1, 1, 1] -> [1]
+ *  - [2, 1, 2] -> [2, 1]
+ *  - [1, 2]    -> [1, 2]
+ *
+ *  @param list the list of elements to remove duplications
+ *  @return the elements of the given list but without duplication
+ */
+fun unique(list: List<Int>): List<Int> {
+    val u: ArrayList<Int> = arrayListOf()
+    list.forEach {
+        if (!u.contains(it)) {
+            u.add(it)
+        }
+    }
+    return u
+}
+
+/**
+ * Returns the maximum of the given elements
+ *
+ * @param list the list of elements to search in
+ * @return the element that has the maximum value among list elements
+ */
+fun myMax(list: List<Int>): Int {
+    var ma = list[0]
+    list.forEach {
+        if (it > ma) {
+            ma = it
+        }
+    }
+    return ma
+}
+
+/**
+ * Returns the minimum of the given elements
+ *
+ * @param list the list of elements to search in
+ * @return the element that has the minimum value among list elements
+ */
+fun myMin(list: List<Int>): Int {
+    var mi = list[0]
+    list.forEach {
+        if (it < mi) {
+            mi = it
+        }
+    }
+    return mi
+}
+
+/**
+ * Returns the number of times that given character is occurred in the given list.
+ *
+ * @param list the list of elements to search in
+ * @param c the character to find its occurrence
+ * @return the number of occurrence or 0 if the element is not in the list
+ */
+fun myCount(list: List<Char>, c: Char): Int {
+    var count = 0
+    list.forEach { n ->
+        if (n == c) {
+            count += 1
+        }
+    }
+    return count
 }
 
 class PracticeTest {
     val chars = listOf('a', 'b', 'c')
     val numbers = listOf(1, 5, 3, 2, 1)
+    val u1 = listOf(1, 1, 1)
+    val u2 = listOf(2, 1, 2)
+    val u3 = listOf(1, 2)
 
     @Test
     fun testIndexOf() {
@@ -76,5 +149,59 @@ class PracticeTest {
     @Test
     fun testSum() {
         assertEquals(numbers.sum(), mySum(numbers))
+    }
+
+    @Test
+    fun testUniqueU1() {
+        assertEquals(listOf(1), unique(u1))
+    }
+
+    @Test
+    fun testUniqueU2() {
+        assertEquals(listOf(2, 1), unique(u2))
+    }
+
+    @Test
+    fun testUniqueU3() {
+        assertEquals(listOf(1, 2), unique(u3))
+    }
+
+    @Test
+    fun testMyMaxNumbers() {
+        assertEquals(numbers.max(), myMax(numbers))
+    }
+
+    @Test
+    fun testMyMaxU1() {
+        assertEquals(u1.max(), myMax(u1))
+    }
+
+    @Test
+    fun testMyMaxU2() {
+        assertEquals(u2.max(), myMax(u2))
+    }
+
+    @Test
+    fun testMyMinNumbers() {
+        assertEquals(numbers.min(), myMin(numbers))
+    }
+
+    @Test
+    fun testMyMinU1() {
+        assertEquals(u1.min(), myMin(u1))
+    }
+
+    @Test
+    fun testMyMinU2() {
+        assertEquals(u2.min(), myMin(u2))
+    }
+
+    @Test
+    fun testMyCount() {
+        val c = listOf('a', 'b', 'a', 'a', 'c', 'c')
+        assertEquals(3, myCount(c, 'a'))
+        assertEquals(1, myCount(c, 'b'))
+        assertEquals(2, myCount(c, 'c'))
+        assertEquals(0, myCount(c, 'e'))
     }
 }
