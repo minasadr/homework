@@ -17,6 +17,18 @@ fun myIndexOf(list: List<Char>, ch: Char): Int {
 }
 
 /**
+ * Returns the index of the last occurrence of the specified element in the list, or -1 if the specified element is not contained in the list.
+ */
+fun myLastIndexOf(list: List<Char>, ch: Char): Int {
+    for (n in list.size - 1 downTo 0) {
+        if (list[n] == ch) {
+            return n
+        }
+    }
+    return -1
+}
+
+/**
  * Returns true if the specified element is in the list, or false if the specified element is not contained in the list.
  */
 fun myContains(list: List<Char>, ch: Char): Boolean {
@@ -107,6 +119,28 @@ fun myCount(list: List<Char>, c: Char): Int {
         }
     }
     return count
+}
+
+/**
+ * Checks if the list is empty
+ */
+fun myIsEmpty(list: List<String>): Boolean = list.size == 0
+
+
+/**
+ * Checks if the list is NOT empty
+ */
+fun myIsNotEmpty(list: List<String>): Boolean = !myIsEmpty(list)
+
+/**
+ * Returns the size of the given list
+ */
+fun mySize(list: List<String>): Int {
+    var s = 0
+    list.forEach {
+        s += 1
+    }
+    return s
 }
 
 class PracticeTest {
@@ -203,5 +237,37 @@ class PracticeTest {
         assertEquals(1, myCount(c, 'b'))
         assertEquals(2, myCount(c, 'c'))
         assertEquals(0, myCount(c, 'e'))
+    }
+
+    @Test
+    fun testMyIsEmpty() {
+        val e1 = listOf("Mi", "Mo", "om")
+        val e2 = listOf<String>()
+        assertEquals(e1.isEmpty(), myIsEmpty(e1))
+        assertEquals(e2.isEmpty(), myIsEmpty(e2))
+    }
+
+    @Test
+    fun testMyIsNotEmpty() {
+        val e1 = listOf("Mi", "Mo", "om")
+        val e2 = listOf<String>()
+        assertEquals(e1.isNotEmpty(), myIsNotEmpty(e1))
+        assertEquals(e2.isNotEmpty(), myIsNotEmpty(e2))
+    }
+
+    @Test
+    fun testMySize() {
+        val e1 = listOf("Mi", "Mo", "om")
+        val e2 = listOf<String>()
+        assertEquals(e1.size, mySize(e1))
+        assertEquals(e2.size, mySize(e2))
+    }
+
+    @Test
+    fun testMyLastIndexOf() {
+        val l1 = listOf('q', 'w', 'q', 'a', 'a', 'q')
+        assertEquals(l1.lastIndexOf('q'), myLastIndexOf(l1, 'q'))
+        assertEquals(l1.lastIndexOf('a'), myLastIndexOf(l1, 'a'))
+        assertEquals(l1.lastIndexOf('w'), myLastIndexOf(l1, 'w'))
     }
 }
