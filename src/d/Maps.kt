@@ -37,30 +37,34 @@ fun main(args: Array<String>) {
 
     println(ctoc.size)
 
-    val hashmap = hashMapOf("Mina" to "Sadr", "Mohammad" to "Shamsi", "Omid" to "Shamsi")
-    println(hashmap.size)
-    hashmap["Fancy"] = "Unknown" // since the key does not exist, it will add the new key with its value
-    println(hashmap.size)
-    println(hashmap["Mina"])
-    hashmap["Mina"] = "Shahidi Sadr"  //since the key already exists, it will update the value only
-    println(hashmap["Mina"])
+    val family = hashMapOf(
+            "Mina"     to "Sadr",
+            "Mohammad" to "Shamsi",
+            "Omid"     to "Shamsi")
 
-    hashmap.put("Mina", "Shahidi") // == hashmap["Mina"] = "Shahidi"
+    println(family.size)
+    family["Fancy"] = "Unknown" // since the key does not exist, it will add the new key with its value
+    println(family.size)
+    println(family["Mina"])
+    family["Mina"] = "Shahidi Sadr"  //since the key already exists, it will update the value only
+    println(family["Mina"])
 
-    val x:String? = hashmap["Omid"] // the key may or may not exist. that is way "?" is used
+    family.put("Mina", "Shahidi") // == hashmap["Mina"] = "Shahidi"
+
+    val x: String? = family["Omid"] // the key may or may not exist. that is way "?" is used
     println("X is : $x")
 
-    val y = hashmap["Kiana"]
+    val y = family["Kiana"]
     println("Y is : $y")
 
-    val z = hashmap.remove("Fancy")
-    println(hashmap.size)
-    println("Z is : $z")
+    val z = family.remove("Fancy")
+    println(family.size)
+    println("Z is : $z")  // prints "Unknown", because the value of given key (Fancy) is "Unknown"
 
-    val w = hashmap.remove("Kiana")
-    println("W is : $w")
+    val w = family.remove("Kiana")
+    println("W is : $w")  // prints null, because there is not key as "Kiana"
 
-    hashmap.forEach { key, value -> println("The value of $key is $value") }
+    family.forEach { key, value -> println("The value of $key is $value") }
 
     val parish = mapOf(Pair("Mina", "Sadr"), Pair("Mohammad", "Shamsi"), Pair("Omid", "Shamsi"))
     println(parish["Omid"])
