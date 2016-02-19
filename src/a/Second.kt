@@ -4,14 +4,7 @@ import org.junit.Test
 import kotlin.test.assertEquals
 
 
-class Rectangle(w: Int, l: Int) {
-    val width: Int
-    val length: Int
-
-    init {
-        width = w
-        length = l
-    }
+class Rectangle(val width: Int, val length: Int) {
 
     fun area(): Int = 2 * (width + length)
 
@@ -19,6 +12,7 @@ class Rectangle(w: Int, l: Int) {
 
     // to display the rectangle in a nice String.
     fun asString(): String = "Rectangle[width: $width, length: $length]"
+    override fun toString():String = "Rectangle[width: $width, length: $length]"
 }
 
 fun area(width: Int, length: Int): Int = 2 * (width + length)
@@ -53,6 +47,7 @@ class SecondTest {
 
         println("......................................")
         println(r.asString())
+        println(r.toString())
     }
 
     @Test

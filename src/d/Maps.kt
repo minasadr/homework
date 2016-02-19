@@ -49,7 +49,7 @@ fun main(args: Array<String>) {
     family["Mina"] = "Shahidi Sadr"  //since the key already exists, it will update the value only
     println(family["Mina"])
 
-    family.put("Mina", "Shahidi") // == hashmap["Mina"] = "Shahidi"
+    family.put("Mina", "Shahidi") // == family["Mina"] = "Shahidi"
 
     val x: String? = family["Omid"] // the key may or may not exist. that is way "?" is used
     println("X is : $x")

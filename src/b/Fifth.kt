@@ -11,5 +11,5 @@ fun main(args: Array<String>) {
         print("${x.toInt()} ")
     println()
     for (m in '0'..'z')
-        print("$m ")
+        print("${m.toInt()} ")
 }

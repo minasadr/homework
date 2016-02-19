@@ -15,7 +15,7 @@ class MySetGeneric<T> {
      * This property shows the number of elements that are currently available in the Set.
      */
     var size: Int = 0
-    val elements: Array<T> = Array<Any>(10, { "" }) as Array<T>
+    private val elements: Array<T> = Array<Any>(size, { '.' }) as Array<T>
 
     /**
      * Checks if the Set is empty.

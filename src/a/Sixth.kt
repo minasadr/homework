@@ -31,12 +31,12 @@ fun highestGrade(a: Array<Student>): String {
 
 class SixthTest {
     @Test
-    fun highestgrade1() {
+    fun highestGrade1() {
         assertEquals("Mina", highestGrade(arrayOf(Student("Mina", "Sadr", 3.0), Student("Mohammad", "Shams", 2.0))))
     }
 
     @Test
-    fun highestgrade2() {
+    fun highestGrade2() {
         val aa = Student("Minaa", "Sadr", 3.8)
         val bb = Student("Mi", "Sad", 3.0)
         val cc = Student("Min", "Sa", 2.9)
@@ -44,12 +44,11 @@ class SixthTest {
     }
 
     @Test
-    fun highestgrade3() {
+    fun highestGrade3() {
         val aa = Student("Mohammad", "Shams", 0.8)
         val bb = Student("Mohamma", "Sham", 2.8)
         val cc = Student("Mohamm", "Sha", 3.8)
         val dd = Student("Moh", "Sh", 3.8)
         assertEquals("Mohamm", highestGrade(arrayOf(aa, bb, cc, dd)))
     }
-
 }

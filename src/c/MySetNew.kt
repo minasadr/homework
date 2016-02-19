@@ -15,7 +15,7 @@ class MySetNew {
      * This property shows the number of elements that are currently available in the Set.
      */
     var size: Int = 0
-    var elements = Array(10, { 0 })
+    var elements = Array(size, { 0 })
 
 
     /**

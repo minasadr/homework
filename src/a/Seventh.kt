@@ -30,14 +30,18 @@ fun highestGradeSort(a: Array<Student>) {
 class SeventhTest {
     @Test
     fun gradeDescending() {
-        val students = arrayOf(Student("Minaa", "Sadr", 3.8), Student("Mi", "Sad", 3.0), Student("Min", "Sa", 3.6))
+        val students = arrayOf(Student("Minaa", "Sadr", 3.8),
+                Student("Mi", "Sad", 3.0),
+                Student("Min", "Sa", 3.6))
         highestGradeSort(students)
         assertEquals(3.8, students[0].grade)
     }
 
     @Test
     fun gradeDescending1() {
-        val students = arrayOf(Student("Minaa", "Sadr", 3.8), Student("Mi", "Sad", 3.0), Student("Min", "Sa", 3.6))
+        val students = arrayOf(Student("Minaa", "Sadr", 3.8),
+                Student("Mi", "Sad", 3.0),
+                Student("Min", "Sa", 3.6))
         highestGradeSort(students)
         assertEquals(3.0, students[2].grade)
     }

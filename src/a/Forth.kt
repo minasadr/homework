@@ -13,29 +13,17 @@ import kotlin.test.assertEquals
  * - Above functions (area and surface) should have automated tests to prove that calculation is correct.*
  */
 
-class MyPoint(x: Int, y: Int) {
-    val x: Int
-    val y: Int
-
-    init {
-        this.x = x   //because it will be confused which one, this means the val x
-        this.y = y
-    }
+class MyPoint(val x: Int, val y: Int) {
 
     override fun toString(): String = "${this.x}, ${this.y}"
+    fun asString(): String = "${this.x}, ${this.y}"
 }
 
 
-class MyRect(a: MyPoint, b: MyPoint) {
-    val topLeft: MyPoint
-    val bottomRight: MyPoint
-
-    init {
-        topLeft = a
-        bottomRight = b
-    }
+class MyRect(val topLeft: MyPoint, val bottomRight: MyPoint) {
 
     override fun toString(): String = "$topLeft, $bottomRight" //????
+    fun asString(): String = "$topLeft, $bottomRight" //????
 
     private fun length(): Int = if (topLeft.x > bottomRight.x) topLeft.x - bottomRight.x else bottomRight.x - topLeft.x
 

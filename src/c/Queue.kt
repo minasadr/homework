@@ -18,13 +18,8 @@ import kotlin.test.assertTrue
  *     - define a variable "tail" to shows that index of free position to insert the new element.
  */
 class MyQueueGeneric<T>(capacity: Int) {
-    val elements: Array<T>
-    var tail: Int
-
-    init {
-        this.elements = Array<Any>(capacity, { "" }) as Array<T>
-        this.tail = 0
-    }
+    val elements: Array<T> = Array<Any>(capacity, { "" }) as Array<T>
+    var tail: Int = 0
 
     /**
      * Inserts the given number to the queue

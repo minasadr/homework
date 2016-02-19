@@ -18,9 +18,14 @@ import kotlin.test.assertEquals
  *     - find code for Canada -> IllegalArgumentException("Canada is not found")
  */
 fun findCode(codes: Map<Int, String>, country: String): Int {
-    codes.forEach {
-        if (it.value == country) {
-            return it.key
+//    codes.forEach {
+//        if (it.value == country) {
+//            return it.key
+//        }
+//    }
+    for(n in codes){
+        if (n.value == country){
+            return n.key
         }
     }
     throw IllegalArgumentException ("$country is not found")
@@ -60,13 +65,23 @@ fun countChars(text: String): Map<Char, Int> {
  *          ->  { Iran -> [Tehran, Shiraz], Germany -> [ Dresden, Berlin,  Munich] }
  */
 fun countryCities(cities: List<Pair<String, String>>): Map<String, Set<String>> {
+//    val result = hashMapOf<String, HashSet<String>>()
+//    cities.forEach {
+//        if (result.containsKey(it.second)) {
+//            val c: HashSet<String> = result[it.second]!!
+//            c.add(it.first)
+//        } else {
+//            result[it.second] = hashSetOf(it.first)
+//        }
+//    }
+//    return result
     val result = hashMapOf<String, HashSet<String>>()
-    cities.forEach {
-        if (result.containsKey(it.second)) {
-            val c: HashSet<String> = result[it.second]!!
-            c.add(it.first)
+    for (n in cities){
+        if(result.containsKey(n.second)){
+            val c: HashSet<String> = result[n.second]!!
+            c.add(n.first)
         } else {
-            result[it.second] = hashSetOf(it.first)
+            result[n.second] = hashSetOf(n.first)
         }
     }
     return result
