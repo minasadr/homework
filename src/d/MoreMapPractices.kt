@@ -2,7 +2,7 @@ package d
 
 import org.junit.Test
 import java.util.*
-import kotlin.system.measureTimeNano
+import kotlin.system.measureNanoTime
 import kotlin.test.assertEquals
 
 /**
@@ -190,13 +190,13 @@ class MoreMapPracticesTest {
         val array = Array(m, { it })
 
         val n = 10
-        val bt = measureTimeNano {
+        val bt = measureNanoTime {
             for (i in 0..n) {
                 binarySearch(array, m - 1)
             }
         }
 
-        val st = measureTimeNano {
+        val st = measureNanoTime {
             for (i in 0..n) {
                 search(array, m - 1)
             }

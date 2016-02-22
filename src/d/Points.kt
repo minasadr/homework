@@ -140,8 +140,6 @@ class PointsTest {
         assertTrue(p1.equals(p3))
 
         assertFalse(p1 === p3)
-        // is the same as
-        assertFalse(p1.identityEquals(p3))
     }
 
     @Test
