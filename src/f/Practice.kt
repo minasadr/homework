@@ -95,6 +95,9 @@ fun animalFuture(animal: Animal){
 }
 
 fun main(args: Array<String>) {
+    val a = Animal("Lo Lo")
+    println(a.move())
+
     val c: Cat = Cat("Pishal")
     val d = Dog("Fancy")
     val b = Bird("Shokoh")
